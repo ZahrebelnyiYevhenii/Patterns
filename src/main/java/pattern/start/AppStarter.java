@@ -1,17 +1,25 @@
 package pattern.start;
 
-import pattern.abstract_factory.rollType.RollType;
-import pattern.abstract_factory.setType.SetType;
-import pattern.abstract_factory.sushiType.SushiType;
-import pattern.abstract_factory.sushibar.Sushibar;
-import pattern.abstract_factory.sushibar.UkraineSushibar;
+import pattern.builder.DescriptionSushi;
+import pattern.builder.Sushi;
+import pattern.builder.director.SushiDirector;
+import pattern.builder.sushiBuilder.DescriptionSushiBuilder;
+import pattern.builder.sushiBuilder.FoodSushiBuilder;
 
 public class AppStarter {
     public static void main(String[] args) {
-        Sushibar sushibar = new UkraineSushibar();
+        SushiDirector sushiDirector = new SushiDirector();
 
-        sushibar.orderSushi(SushiType.SPACY);
-        sushibar.orderRoll(RollType.GREEN_DRAGON);
-        sushibar.orderSet(SetType.CHEESE);
+        FoodSushiBuilder sushiBuilder = new FoodSushiBuilder();
+        sushiDirector.constructSpacySushi(sushiBuilder);
+
+        Sushi sushi = sushiBuilder.getSushi();
+        System.out.println("Sushi make: " + sushi.getSushiType());
+
+        DescriptionSushiBuilder descriptionSushiBuilder = new DescriptionSushiBuilder();
+        sushiDirector.constructSpacySushi(descriptionSushiBuilder);
+
+        DescriptionSushi descriptionSushi = descriptionSushiBuilder.getSushi();
+        System.out.println("Sushi description make: " + descriptionSushi.read());
     }
 }
