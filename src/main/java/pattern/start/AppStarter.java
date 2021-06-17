@@ -1,13 +1,12 @@
 package pattern.start;
 
-import pattern.factory.Sushibar;
-import pattern.factory.sushiFactory.SimpleSushiFactory;
-import pattern.factory.sushiType.SushiType;
+import pattern.factory_method.sushiType.SushiType;
+import pattern.factory_method.sushibar.AmericanSushibar;
+import pattern.factory_method.sushibar.Sushibar;
 
 public class AppStarter {
     public static void main(String[] args) {
-        SimpleSushiFactory sushiFactory = new SimpleSushiFactory();
-        Sushibar sushibar = new Sushibar(sushiFactory);
-        sushibar.orderSushi(SushiType.TOBIKO);
+        Sushibar sushibar = new AmericanSushibar();
+        sushibar.orderSushi(SushiType.SIVID);
     }
 }
